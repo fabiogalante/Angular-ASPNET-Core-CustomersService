@@ -12,7 +12,7 @@ namespace Angular_ASPNETCore_CustomersService.Apis
     [Route("api/customers")]
     public class CustomersApiController : Controller
     {
-        ICustomersRepository _CustomersRepository;
+        readonly ICustomersRepository _CustomersRepository;
         ILogger _Logger;
 
         public CustomersApiController(ICustomersRepository customersRepo, ILoggerFactory loggerFactory) {

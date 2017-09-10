@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Http;
 using Swashbuckle.AspNetCore.Swagger;
-using Swashbuckle.AspNetCore.SwaggerUI;
 using Angular_ASPNETCore_CustomersService.Repository;
 
 namespace Angular_ASPNETCore_CustomersService
@@ -37,14 +31,15 @@ namespace Angular_ASPNETCore_CustomersService
             //});
 
             //Add SQL Server support
-            //services.AddDbContext<CustomersDbContext>(options => {
-            //    options.UseSqlServer(Configuration.GetConnectionString("CustomersSqlServerConnectionString"));
-            //});
+            services.AddDbContext<CustomersDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("CustomersSqlServerConnectionString"));
+            });
 
             //Add SqLite support
-            services.AddDbContext<CustomersDbContext>(options => {
-                options.UseSqlite(Configuration.GetConnectionString("CustomersSqliteConnectionString"));
-            });
+            //services.AddDbContext<CustomersDbContext>(options => {
+            //    options.UseSqlite(Configuration.GetConnectionString("CustomersSqliteConnectionString"));
+            //});
 
             services.AddMvc();
 
